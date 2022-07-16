@@ -6,10 +6,7 @@ const { stringify } = require("querystring");
 
 // TODO: Create an array of questions for user input
 
-const questions = 
-
-inquirer
-.prompt([
+const questions = [
   {
   name:"Description",
   type:"input",
@@ -56,25 +53,26 @@ message:"Who is Contributing?"
   type:"input",
   message:"Write title name"
 }
-])
+]
+
+// TODO: Create a function to initialize app
+function init() {
+  inquirer
+.prompt(questions)
 .then((data) => {
-  const filename = `${data.name}.json`;
-  fs.writeFile(filename,JSON,stringify(data),(err) => 
-  err ? console.log(err) : console.log('Success!')
-  );
+  console.log(data)
 });
+
+
+
+  // generateMarkdown(reponses)
+}
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   fs.writeFile('README.md', data, (err) =>
   err ? console.error(err) : console.log(response)
 );
-generateMarkdown(reponses)
-}
-
-// TODO: Create a function to initialize app
-function init() {
-  
 }
 
 // Function call to initialize app
